@@ -19,12 +19,6 @@ class Location(models.Model):
             return "%s, %s" % (self.city, self.state)
         else:
             return "%s, %s" % (self.city, self.country)
-            
-    
-    @models.permalink
-    def get_absolute_url(self):
-        return ('locations.views.location', (), {'location_slug': self.slug})
-    
     
     def save(self, *args, **kwargs):
         slug_title = self.city + self.country
