@@ -27,4 +27,5 @@ setup(name='django-locations',
       install_requires = [],
       include_package_data=True,
       zip_safe=False,
+      install_requires=['django-localflavor']
     )
