@@ -1,7 +1,7 @@
 from django.db import models
-from django.utils import simplejson
+import simplejson
 import urllib
-from hadrian.contrib.locations.choices import *
+from locations.choices import *
 from hadrian.utils.slugs import unique_slugify
 
 
