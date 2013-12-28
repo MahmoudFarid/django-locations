@@ -24,8 +24,7 @@ setup(name='django-locations',
       url='http://github.com/dstegelman/django-locations',
       license='MIT',
       packages=find_packages(),
-      install_requires = [],
       include_package_data=True,
       zip_safe=False,
-      install_requires=['django-localflavor']
+      install_requires=['django-localflavor', 'hadrian']
     )
