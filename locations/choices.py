@@ -1,4 +1,4 @@
-from django.contrib.localflavor.us import us_states
+from localflavor.us import us_states
 
 STATE_CHOICES = us_states.US_STATES
 

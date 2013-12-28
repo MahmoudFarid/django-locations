@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '0.1'
+version = '0.1.1'
 
 setup(name='django-locations',
       version=version,
@@ -24,7 +24,7 @@ setup(name='django-locations',
       url='http://github.com/dstegelman/django-locations',
       license='MIT',
       packages=find_packages(),
-      install_requires = [],
       include_package_data=True,
       zip_safe=False,
+      install_requires=['django-localflavor', 'hadrian']
     )
