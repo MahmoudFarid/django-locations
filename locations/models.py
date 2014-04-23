@@ -1,8 +1,9 @@
 from django.db import models
-import simplejson
-import urllib
+
+from geopy.geocoders import GoogleV3
+
 from locations.choices import *
-from hadrian.utils.slugs import unique_slugify
+from locations.utils import unique_slugify
 
 
 class Location(models.Model):
@@ -23,18 +24,10 @@ class Location(models.Model):
     def save(self, *args, **kwargs):
         slug_title = self.city + self.country
         unique_slugify(self, slug_title)
+        geolocator = GoogleV3()
         location = "%s %s %s" % (self.city, self.state, self.country)
-        location = urllib.quote_plus(location)
-        
-        # Use google API to get silly stuff back
-        google_feed = 'http://maps.googleapis.com/maps/api/geocode/json?address=' + location + '&sensor=false'
-        map_data = urllib.urlopen(google_feed)
-        map_json = map_data.read()
-        map_object = simplejson.loads(map_json)
-        result_object = map_object['results']
-        location = result_object[0]['geometry']
-        geos = location['location']
-        self.latitude = geos['lat']
-        self.longitude = geos['lng']
+        address, (latitude, longitude) = geolocator.geocode(location)
+
+        self.latitude = latitude
+        self.longitude = longitude
         super(Location, self).save(*args, **kwargs)
-    

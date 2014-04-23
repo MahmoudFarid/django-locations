@@ -26,5 +26,5 @@ setup(name='django-locations',
       packages=find_packages(),
       include_package_data=True,
       zip_safe=False,
-      install_requires=['django-localflavor', 'hadrian']
+      install_requires=['django-localflavor>=1.0,<2.0', 'geopy>=0.99,<1.0']
     )
