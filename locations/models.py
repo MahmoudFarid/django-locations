@@ -13,14 +13,14 @@ class Location(models.Model):
     latitude = models.CharField(max_length=250, blank=True, editable=False)
     longitude = models.CharField(max_length=250, blank=True, editable=False)
     slug = models.SlugField(editable=False)
-    default_location = models.BooleanField()
-    
+    default_location = models.BooleanField(default=False)
+
     def __unicode__(self):
         if self.state:
             return "%s, %s" % (self.city, self.state)
         else:
             return "%s, %s" % (self.city, self.country)
-    
+
     def save(self, *args, **kwargs):
         slug_title = self.city + self.country
         unique_slugify(self, slug_title)
