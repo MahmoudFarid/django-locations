@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '0.1.2'
+version = '0.2.0'
 
 setup(name='django-locations',
       version=version,
@@ -14,6 +14,7 @@ setup(name='django-locations',
           "Operating System :: OS Independent",
           "Framework :: Django",
           "Programming Language :: Python",
+          "Programming Language :: Python :: 3",
           "Topic :: Internet :: WWW/HTTP :: Dynamic Content :: CGI Tools/Libraries",
           "Topic :: Utilities",
           "License :: OSI Approved :: MIT License",
@@ -26,5 +27,5 @@ setup(name='django-locations',
       packages=find_packages(),
       include_package_data=True,
       zip_safe=False,
-      install_requires=['django-localflavor>=1.0,<2.0', 'geopy>=0.99,<1.0']
+      install_requires=['django-localflavor>=1.1,<2.0', 'geopy>=1.9.1,<2.0']
     )
