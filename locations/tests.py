@@ -25,7 +25,7 @@ class TestLocations(unittest.TestCase):
 
         locate.save()
 
-        self.assertEqual(locate.__unicode__(), 'Loveland, CO')
+        self.assertEqual(locate.__str__(), 'Loveland, CO')
 
     def test_no_state_unicode(self):
         locate = Location(city='Rome',
@@ -34,4 +34,4 @@ class TestLocations(unittest.TestCase):
 
         locate.save()
 
-        self.assertEqual(locate.__unicode__(), 'Rome, Italy')
+        self.assertEqual(locate.__str__(), 'Rome, Italy')

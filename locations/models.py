@@ -15,19 +15,36 @@ class Location(models.Model):
     slug = models.SlugField(editable=False)
     default_location = models.BooleanField(default=False)
 
-    def __unicode__(self):
+    def __str__(self):
         if self.state:
-            return "%s, %s" % (self.city, self.state)
+            return "{city}, {state}".format(city=self.city, state=self.state)
         else:
-            return "%s, %s" % (self.city, self.country)
+            return "{city}, {country}".format(city=self.city, country=self.country)
+
+    def fetch_location(self):
+        """
+        Fetch the lat/long for a given string location.
+
+        :return: lat, long
+        """
+
+        geolocator = GoogleV3()
+        location = '{city} {state} {country}'.format(
+            city=self.city,
+            state=self.state,
+            country=self.country
+        )
+        address, (latitude, longitude) = geolocator.geocode(location)
+
+        return latitude, longitude
 
     def save(self, *args, **kwargs):
         slug_title = self.city + self.country
         unique_slugify(self, slug_title)
-        geolocator = GoogleV3()
-        location = "%s %s %s" % (self.city, self.state, self.country)
-        address, (latitude, longitude) = geolocator.geocode(location)
+
+        latitude, longitude = self.fetch_location()
 
         self.latitude = latitude
         self.longitude = longitude
+
         super(Location, self).save(*args, **kwargs)
