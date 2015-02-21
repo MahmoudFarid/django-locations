@@ -2,7 +2,7 @@ from django.db import models
 
 from geopy.geocoders import GoogleV3
 
-from locations.choices import *
+from locations.choices import STATE_CHOICES, COUNTRY_CHOICES
 from locations.utils import unique_slugify
 
 
