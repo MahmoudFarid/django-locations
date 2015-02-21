@@ -3,3 +3,4 @@ geopy>=0.99,<1.0
 django>=1.7,<1.8
 pytest-flakes==0.2
 pytest==2.6.4
+pytest-django
