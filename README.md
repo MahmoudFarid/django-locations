@@ -9,9 +9,7 @@ This supports Python 3 **only**
 Installation 
 ------------
 
-Installing from Source (This package is not available on Pypi)
-
-    pip install git+git://github.com/dstegelman/django-locations.git@master#egg=locations
+    pip install django-locations-base
     
     
 Add to installed apps.
