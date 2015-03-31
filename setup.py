@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '0.2.2'
+version = '0.2.4'
 
 setup(name='django-locations-base',
       version=version,
@@ -13,7 +13,9 @@ setup(name='django-locations-base',
           "Natural Language :: English",
           "Operating System :: OS Independent",
           "Framework :: Django",
+          "Framework :: Django :: 1.7",
           "Programming Language :: Python",
+          "Programming Language :: Python :: 2",
           "Programming Language :: Python :: 3",
           "Topic :: Internet :: WWW/HTTP :: Dynamic Content :: CGI Tools/Libraries",
           "Topic :: Utilities",

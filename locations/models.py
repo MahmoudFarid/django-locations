@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 
 from geopy.geocoders import GoogleV3
 
@@ -6,6 +7,7 @@ from locations.choices import STATE_CHOICES, COUNTRY_CHOICES
 from locations.utils import unique_slugify
 
 
+@python_2_unicode_compatible
 class Location(models.Model):
     city = models.CharField(max_length=250)
     state = models.CharField(max_length=250, choices=STATE_CHOICES, blank=True, help_text="State is not required if you are out of the country.")
@@ -42,9 +44,10 @@ class Location(models.Model):
         slug_title = self.city + self.country
         unique_slugify(self, slug_title)
 
-        latitude, longitude = self.fetch_location()
+        if not self.latitude and not self.longitude:
+            latitude, longitude = self.fetch_location()
 
-        self.latitude = latitude
-        self.longitude = longitude
+            self.latitude = latitude
+            self.longitude = longitude
 
         super(Location, self).save(*args, **kwargs)
