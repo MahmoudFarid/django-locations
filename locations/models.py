@@ -42,7 +42,7 @@ class Location(models.Model):
         slug_title = self.city + self.country
         unique_slugify(self, slug_title)
 
-        if not latitude and not longitude:
+        if not self.latitude and not self.longitude:
             latitude, longitude = self.fetch_location()
 
             self.latitude = latitude
