@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '0.3.0'
+version = '0.3.1'
 
 setup(name='django-locations-base',
       version=version,
@@ -27,7 +27,8 @@ setup(name='django-locations-base',
       url='http://github.com/dstegelman/django-locations',
       license='MIT',
       packages=['locations',
-                'locations.migrations'],
+                'locations.migrations',
+                'locations.south_migrations'],
       include_package_data=True,
       zip_safe=False,
       install_requires=['django-localflavor>=1.1,<2.0', 'geopy>=1.9.1,<2.0']
