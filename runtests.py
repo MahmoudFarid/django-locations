@@ -45,8 +45,12 @@ try:
 except AttributeError:
     pass
 
-from django.test.simple import DjangoTestSuiteRunner
-test_runner = DjangoTestSuiteRunner(verbosity=1)
+try:
+    from django.test.simple import DjangoTestSuiteRunner
+    test_runner = DjangoTestSuiteRunner(verbosity=1)
+except ImportError:
+    from django.test.runner import DiscoverRunner
+    test_runner = DiscoverRunner(verbosity=1)
 failures = test_runner.run_tests(['locations', ])
 if failures:
     sys.exit(failures)
